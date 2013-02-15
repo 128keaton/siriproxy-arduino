@@ -18,13 +18,13 @@ class SiriProxy::Plugin::Arduino < SiriProxy::Plugin
 
   listen_for /light(s)? on/i do
     @led.send :on
-    say "Light on"
+    say "Turn light on"
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
   listen_for /light(s)? off/i do
     @led.send :off
-    say "Light off" 
+    say "Turn light off" 
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
