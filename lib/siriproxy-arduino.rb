@@ -2,6 +2,7 @@ require 'cora'
 require 'siri_objects'
 require 'pp'
 require 'dino'
+require 'McQuery'
 
 #######
 # siriproxy-arduino is boilerplate code for controlling your Arduino from Siri.
@@ -33,6 +34,13 @@ class SiriProxy::Plugin::Arduino < SiriProxy::Plugin
     say "Light is green"
     request_completed
   end
+    listen_for /check server/i do
+   
+    say "Checking minecraft server" 
+    puts McQuery::Ping.new('mc.keatonburleson.com', 25565).doPing
+    request_completed
+    say "Server version is.@ #{:sversion}, have a nice day!"
+end
 
   listen_for /light(s)? blue/i do
     @rgb_led.blue
